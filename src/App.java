@@ -12,8 +12,8 @@ public class App {
 
     public static void main(String[] args) {
         // altere o nome do arquivo e o algoritmo a seguir:
-        String file = "tinyUF"; // sem o .txt
-        String algoritmo = "quickFind";
+        String file = "adv_500000"; // sem o .txt
+        String algoritmo = "quickUnionPonderado"; // opções: quickfind, quickunion, quickUnionPonderado
 
         try {
             System.out.println("Lendo arquivo...");
@@ -113,7 +113,7 @@ public class App {
                 return new QuickFind(n);
             case "quickunion":
                 return new QuickUnion(n);
-            case "quickUnionponderado":
+            case "quickunionponderado":
                 return new QuickUnionPonderado(n);
             default:
                 throw new IllegalArgumentException("Algoritmo desconhecido");

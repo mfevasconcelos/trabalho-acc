@@ -2,3 +2,6 @@
 bin/
 
 .vscode/
+
+.salvos/
+.csvsalvo/

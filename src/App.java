@@ -12,12 +12,13 @@ public class App {
 
     public static void main(String[] args) {
         // altere o nome do arquivo e o algoritmo a seguir:
-        String file = "instancias/tinyUF.txt";
-        String algoritmo = "QuickFind";
+        String file = "tinyUF"; // sem o .txt
+        String algoritmo = "quickFind";
 
         try {
             System.out.println("Lendo arquivo...");
-            List<Conexao> conexoes = lerArquivo(file);
+            String filePath = "instancias/"+file+".txt";
+            List<Conexao> conexoes = lerArquivo(filePath);
             int n = conexoes.remove(0).p(); 
 
             System.out.println("Iniciando testes de tempo para " + algoritmo + "...");
@@ -25,7 +26,7 @@ public class App {
             System.out.printf("Tempo Médio: %.2f ns | Desvio Padrão: %.2f ns%n", statsQF.mediaNs(), statsQF.desvioPadraoNs());
 
             System.out.println("Gerando dados de acesso ao vetor para " + algoritmo + "...");
-            gerarDadosAcessoVetor(n, conexoes, algoritmo, "csv/resultados_acessos_" + algoritmo + ".csv");
+            gerarDadosAcessoVetor(n, conexoes, algoritmo, "csv/resultados_acessos_" + file + "_" + algoritmo + ".csv");
 
             System.out.println("Processo concluído!");
 
@@ -107,12 +108,12 @@ public class App {
     }
 
     private static UnionFind instanciarAlgoritmo(String tipo, int n) {
-        switch (tipo) {
-            case "QuickFind":
+        switch (tipo.toLowerCase()) {
+            case "quickfind":
                 return new QuickFind(n);
-            case "QuickUnion":
+            case "quickunion":
                 return new QuickUnion(n);
-            case "QuickUnionPonderado":
+            case "quickUnionponderado":
                 return new QuickUnionPonderado(n);
             default:
                 throw new IllegalArgumentException("Algoritmo desconhecido");
